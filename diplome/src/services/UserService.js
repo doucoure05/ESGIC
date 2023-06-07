@@ -55,7 +55,7 @@ export const deleteUser = async (id) => {
 export const getUserByLoginAndPassword = async (login, passWord) => {
   try {
     const response = await axios.post(
-      `http://localhost:5001/userByLoginAndPass/`,
+      `http://localhost:5000/userByLoginAndPass/`,
       {
         login: login,
         password: passWord,
