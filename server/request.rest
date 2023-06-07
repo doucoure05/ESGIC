@@ -1,0 +1,72 @@
+
+                                ########################################## USER #################################
+GET http://localhost:5000/users
+
+###
+GET http://localhost:5000/users/2
+
+###
+POST http://localhost:5000/users
+Content-Type: application/json
+
+{
+    "nom": "Doucoure",
+    "prenom": "Moustapha",
+    "login": "Mous",
+    "password": "douc",
+    "profil": "Admin"
+}
+
+###
+PATCH http://localhost:5000/users/2
+Content-Type: application/json
+
+{
+    "nom": "Doucoure",
+    "prenom": "Baba",
+    "login": "Mous",
+    "password": "douc",
+    "profil": "Admin"
+}
+ 
+###
+DELETE http://localhost:5000/users/2
+
+
+
+
+                                ########################################## DIPLOME #################################
+###
+GET http://localhost:5000/diplomes
+
+###
+GET http://localhost:5000/diplomes/1
+
+###
+POST http://localhost:5000/diplomes
+Content-Type: application/json
+
+{
+    "filiere": "Génie Logiciel",
+    "niveau": "Mater",
+    "nom": "Dolo",
+    "prenom": "Pière",
+    "annee": "2020-2021",
+    "date_deliv": "20/10/2021"
+}
+
+###
+PATCH http://localhost:5000/diplomes/2
+Content-Type: application/json
+
+{
+    "filiere": "Génie Logiciel",
+    "niveau": "Mater",
+    "nom": "Dembelé",
+    "prenom": "Jean Pière",
+    "annee": "2020-2021",
+    "date_deliv": "20/10/2021"
+}
+ 
+###
+DELETE http://localhost:5000/diplomes/2

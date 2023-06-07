@@ -1,0 +1,31 @@
+.div{
+    background: white;
+    border: 5px solid blue;
+    width: 843px;
+    margin: auto;
+}
+
+#h3{
+    text-align: center;
+    color: red;
+}
+
+h5 {
+    text-align: center;
+};
+
+
+#image {
+    width: 100px;
+    height: 100px;
+};
+
+.Button{
+    margin: auto;
+    justify-content: center;
+}
+
+/* #infoE{
+    background: red;
+    text-align: center;
+} */
