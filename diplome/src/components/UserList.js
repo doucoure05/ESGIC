@@ -1,7 +1,4 @@
 import React, {Component} from 'react';
-import axios from "axios";
-import AddUser from './AddUser';
-import EditUser from './EditUser';
 import UserModal from './UserModal';
 import User from "../models/UserModel";
 import * as service from "../services/UserService";
@@ -165,7 +162,7 @@ export default class ListUser extends Component {
                     >
                         <Toast.Header closeButton={false}>
                             <img
-                                src="images/online-store_32.png"
+                                src="images/diplome2.jpeg"
                                 className="rounded me-2"
                                 alt="boost"
                             />

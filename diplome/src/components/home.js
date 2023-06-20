@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { Route, Routes, Link, BrowserRouter } from "react-router-dom";
 import Button from "react-bootstrap/esm/Button";
 import UserList from './UserList';
-import AddUser from './AddUser';
-import EditUser from './EditUser';
 import AddDiplome from './AddDiplome';
 import Diplome from "./diplome";
 import GenererDiplome from "./GenererDiplome";
@@ -129,8 +127,6 @@ export default class Home extends Component {
 
                                     {/* User routes */}
                                     <Route path='/userList' element={<UserList />} ></Route>
-                                    <Route path='/addUser' element={<AddUser />} ></Route>
-                                    <Route path='/edit/:id' element={<EditUser />} ></Route>
 
                                     {/* Other routes */}
                                     {/* <Route path="/home" element={<Home />} ></Route> */}
