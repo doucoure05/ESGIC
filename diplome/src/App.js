@@ -59,11 +59,11 @@ export default class App extends Component {
   render() {
     return (
       <>
-        {/* {this.state.user !== null ? ( */}
+        {this.state.user !== null ? (
           <Home onLogOut={this.logOut} />
-        {/* ) : (
+        ) : (
           <Login onLog={this.log} />
-        )} */}
+        )}
       </>
     );
   }

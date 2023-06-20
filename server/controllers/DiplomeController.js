@@ -27,7 +27,7 @@ export const createDiplome = async (req, res) => {
         await Diplome.create(req.body);       
         res.status(201).json({msg: "Diplome created"});
     } catch (error) {
-        console.log(error.message);
+        console.log('*********************\n the current error'+error.message);
     }
 }
 

@@ -64,7 +64,7 @@ export default class AddUser extends Component {
                 profil: this.state.profil,
             });
         } catch (error) {
-            console.log(error);
+            console.log('**************************\n this is the current error preventing to saveUser' + error);
         }
     }
 
@@ -148,7 +148,7 @@ export default class AddUser extends Component {
                     </Modal.Body>
                     <Modal.Footer>
                         <div className="fied">
-                            <button type='submit' className='button is-success' onClick={() => this.saveUser}>Save</button>
+                            <button type='submit' className='button is-success' onClick={this.saveUser}>Save</button>
                         </div>
                     </Modal.Footer>
                 </Modal>

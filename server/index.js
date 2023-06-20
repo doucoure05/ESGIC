@@ -15,20 +15,20 @@ app.use(DiplomeRoute);
 // app.get('/', (req, res) => {
 //     res.send('Hello, World!!');
 // })
-const _dirname = path.dirname("");
-const buildPath = path.join(_dirname, "../diplome/build");
+// const _dirname = path.dirname("");
+// const buildPath = path.join(_dirname, "../diplome/build");
 
-app.use(express.static(buildPath));
+// app.use(express.static(buildPath));
 
-app.get('/*', function(req, res) {
+// app.get('/*', function(req, res) {
 
-    res.sendFile(
-        path.join(__dirname, "../diplome/build/index.html"),
-        function (err) {
-            if (err) {
-                res.status(500).send(err);
-            }
-        }
-    );
-});
+//     res.sendFile(
+//         path.join(__dirname, "../diplome/build/index.html"),
+//         function (err) {
+//             if (err) {
+//                 res.status(500).send(err);
+//             }
+//         }
+//     );
+// });
 app.listen(PORT, () => console.log('Server up and running!!!, listening to port ' + PORT));

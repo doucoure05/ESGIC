@@ -49,7 +49,7 @@ export default class EditUser extends Component {
     };
 
     UpdateUser = async (e) => {
-        e.preventDefault();
+        //e.preventDefault();
         try {
             await axios.patch(`http://localhost:5000/users/${this.state.id}`, {
                 nom: this.state.nom,
@@ -163,7 +163,7 @@ export default class EditUser extends Component {
                     <Modal.Footer>
                         <div className="fied">
                             <button type='submit' className='button is-success' onClick={(e) => {
-                                this.saveUser();
+                                this.UpdateUser();
                                 this.handleClose();
                             }}>Save</button>
                         </div>

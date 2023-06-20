@@ -1,106 +1,182 @@
-import React, {useState, useEffect} from 'react';
+import React, {Component} from 'react';
 import axios from "axios";
 import AddUser from './AddUser';
 import EditUser from './EditUser';
+import UserModal from './UserModal';
+import User from "../models/UserModel";
+import * as service from "../services/UserService";
+import Toast from "react-bootstrap/Toast";
+import ToastContainer from "react-bootstrap/ToastContainer";
 
-const UserList = () => {
-                                      //Empty array
-    const [users, setUser] = useState([]);
+export default class ListUser extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            listUser: [],
+            toastShow: false,
+            toastLibelle: "",
+        };
+    }
 
-    useEffect(()=>{
-        getUsers();
-    }, []);
+    getLIstUser() {
+        service.getUsers().then((users) => {
+            let list = [];
+            users.forEach((user) => {
+                let u = new User(
+                    user.id,
+                    user.nom,
+                    user.prenom,
+                    user.login,
+                    user.password,
+                    user.profil,
+                );
+                list.push(u);
+            });
+            this.setState(
+                {
+                    listUser: list,
+                },
+                () => { }
+            );
+        });
+    }
 
-    //Methode to fetch data
-    const getUsers = async ()=>{
-        const response = await axios.get('http://localhost:5000/users');
-        setUser(response.data);
+    componentDidMount() {
+        this.getLIstUser();
+    }
+    onSave = (user) => {
+        service.saveUser(user).then((result) => {
+            this.getLIstUser();
+            let msg =
+                result.msg === "success"
+                    ? "Ajout effectué avec succès."
+                    : "Une erreur est intervenu lors de l'ajout.";
+            this.toggleToastShow(msg);
+        });
+    };
+    onUpdate = (user) => {
+        service.updateUser(user).then((result) => {
+            this.getLIstUser();
+            let msg =
+                result.msg === "success"
+                    ? "Modification effectué avec succès."
+                    : "Une erreur est intervenu lors de la modification.";
+            this.toggleToastShow(msg);
+        });
+    };
+    onDelete = (user) => {
+        service.deleteUser(user.id).then((result) => {
+            this.getLIstUser();
+            let msg =
+                result.msg === "success"
+                    ? "Suppression effectué avec succès."
+                    : "Suppression impossible! Nous avons des opérations lié à ce utilisateurs.";
+            this.toggleToastShow(msg);
+        });
+    };
+    toggleToastShow = (libelle) => {
+        this.setState({
+            toastShow: !this.state.toastShow,
+            toastLibelle: libelle,
+        });
     };
 
-    return (
-        <>
-            <h2 className="text-center display-4">
-                Utilisateur
-            </h2>
-            <section className="content-header">
-                <div className="container-fluid">
-                    <div className="row mb-2">
-                        <div className="col-sm-6">{/* <h1>Liste des clients</h1> */}</div>
+    render() {
+        return (
+            <>
+                <section className="content-header">
+                    <div className="container-fluid">
+                        <div className="row mb-2">
+                            <div className="col-sm-6">{/* <h1>Liste des users </h1> */}</div>
+                        </div>
                     </div>
-                </div>
-            </section>
-            <div className="dropdown-divider"></div>
-            <section className="content">
-                <div className="container-fluid">
-                    <div className="col-md-12">
-                        <div className="card card-success card-outline">
-                            <div className="card-header">
-                                <h3 className="card-title">Liste des utilisateurs</h3>
-                            </div>
-                            <div className="card-body">
-                                <AddUser
-                                    libelle={"Nouveau utilisateur"}
-                                    add={true}
-                                    btnStyle="btn btn-block btn-success"
-                                    btnIcon="bi-plus-circle"
-                                    width="100px"
-                                    onClose={getUsers}
-                                />
-                                <table className="table">
-                                    <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Nom</th>
-                                            <th>Prenom</th>
-                                            <th>Login</th>
-                                            <th>Password</th>
-                                            <th>Profil</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {users.map((user, index) => (
-                                            <tr key={user.id}>
-                                                <td>{user.id}</td>
-                                                <td>{user.nom}</td>
-                                                <td>{user.prenom}</td>
-                                                <td>{user.login}</td>
-                                                <td>{user.password}</td>
-                                                <td>{user.profil}</td>
-                                                <td width={200}>
-                                                    {/* <Link to={`/edit/${user.id}`} className="button is-small is-info">Editer</Link> */}
-                                                    <EditUser
-                                                        libelle={"Editer"}
-                                                        add={true}
-                                                        btnStyle="btn btn-block btn-success"
-                                                        btnIcon="bi-plus-circle"
-                                                        width="100px"
-                                                        id={user.id}
-                                                        onClose={getUsers}
-                                                    />
-                                                    {/* <button className="button is-small is-danger"
-                                                        onClick={() => deleteUser(user.id)} >
-                                                        Supprimer
-                                                    </button> */}
-                                                </td>
+                </section>
+                <div className="dropdown-divider"></div>
+                <section className="content">
+                    <div className="container-fluid">
+                        <div className="col-md-12">
+                            <div className="card card-success card-outline">
+                                <div className="card-header">
+                                    <h3 className="card-title">Liste des utilisateurs</h3>
+                                </div>
+                                <div className="card-body">
+                                    <UserModal
+                                        libelle={"Nouveau Utilisateur"}
+                                        add={true}
+                                        user={null}
+                                        btnStyle="btn btn-block btn-success"
+                                        btnIcon="bi-plus-circle"
+                                        onSave={this.onSave}
+                                    />
+                                    <table className="table">
+                                        <thead>
+                                            <tr>
+                                                <th width={50}>ID</th>
+                                                <th>Nom</th>
+                                                <th>Prénom</th>
+                                                <th>login</th>
+                                                <th>mot de passe</th>
+                                                <th>Profile</th>
+                                                <th width={100}>Action</th>
                                             </tr>
-                                        ))}
-
-                                    </tbody>
-                                </table>
-                                {users.length > 0 ? null : (
-                                    <h2 className="text-center display-4">
-                                        Aucun diplome
-                                    </h2>
-                                )}
+                                        </thead>
+                                        <tbody>
+                                            {this.state.listUser.map((user, index) => (
+                                                <tr key={user.id}>
+                                                    <td>{user.id}</td>
+                                                    <td>{user.nom}</td>
+                                                    <td>{user.prenom}</td>
+                                                    <td>{user.login}</td>
+                                                    <td>{user.password}</td>
+                                                    <td>{user.profil}</td>
+                                                    <td>
+                                                        <UserModal
+                                                            // title
+                                                            libelle={"Editer utilisateur"}
+                                                            add={true}
+                                                            user={user}
+                                                            btnStyle="button is-small is-info"
+                                                            onSave={this.onUpdate}
+                                                            onDelete={this.onDelete}
+                                                            btnIcon="bi bi-pencil"
+                                                        />
+                                                    </td>
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                    {this.state.listUser.length > 0 ? null : (
+                                        <h2 className="text-center display-4">
+                                            Aucun élément trouvé
+                                        </h2>
+                                    )}
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
-            
-        </>
-    )
+                </section>
+
+                <ToastContainer className="p-3" position="top-end">
+                    <Toast
+                        show={this.state.toastShow}
+                        onClose={this.toggleToastShow}
+                        delay={3000}
+                        autohide
+                    >
+                        <Toast.Header closeButton={false}>
+                            <img
+                                src="images/online-store_32.png"
+                                className="rounded me-2"
+                                alt="boost"
+                            />
+                            <strong className="me-auto">Diplome.ESGIC</strong>
+                        </Toast.Header>
+                        <Toast.Body>{this.state.toastLibelle}</Toast.Body>
+                    </Toast>
+                </ToastContainer>
+            </>
+        );
+    }
 }
 
-export default UserList;
+

@@ -216,7 +216,7 @@ export default class AddDiplome extends Component {
                     </Modal.Body>
                     <Modal.Footer>
                         <div className="fied">
-                            <button type='submit' className='button is-success' onClick={() => this.saveDiplome}>Save</button>
+                            <button type='submit' className='button is-accent-blue' onClick={() => this.saveDiplome}>Save</button>
                         </div>
                     </Modal.Footer>
                 </Modal>

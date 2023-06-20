@@ -3,9 +3,9 @@ import {getDiplomes, getDiplomeById, createDiplome, updateDiplome, deleteDiplome
 
 const router = express.Router();
 router.get('/diplomes', getDiplomes);
-router.get('/diplomes/:id', getDiplomeById);
-router.post('/diplomes', createDiplome);
-router.patch('/diplomes/:id', updateDiplome);
-router.delete('/diplomes/:id', deleteDiplome);
+router.get('/diplome/:id', getDiplomeById);
+router.post('/diplome', createDiplome);
+router.patch('/diplome/:id', updateDiplome);
+router.delete('/diplome/:id', deleteDiplome);
 
 export default router;

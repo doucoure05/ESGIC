@@ -3,9 +3,9 @@ import { getUsers, getUserById, createUser, updateUser, deleteUser, getUsserByLo
 
 const router = express.Router();
 router.get('/users', getUsers);
-router.get('/users/:id', getUserById);
-router.post('/users', createUser);
-router.patch('/users/:id', updateUser);
-router.delete('/users/:id', deleteUser);
+router.get('/user/:id', getUserById);
+router.post('/user', createUser);
+router.patch('/user/:id', updateUser);
+router.delete('/user/:id', deleteUser);
 router.post("/userByLoginAndPass", getUsserByLoginAndPassword);
 export default router;
