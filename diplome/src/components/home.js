@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Routes, Link, BrowserRouter } from "react-router-dom";
 import Button from "react-bootstrap/esm/Button";
-import axios from 'axios';
-import { Router, useNavigate } from 'react-router-dom';
 import UserList from './UserList';
 import AddUser from './AddUser';
 import EditUser from './EditUser';
@@ -10,8 +8,11 @@ import AddDiplome from './AddDiplome';
 import Diplome from "./diplome";
 import GenererDiplome from "./GenererDiplome";
 import Formulaire from "./formulaire";
+import UserProfile from '../userProfile/UserProfile';
 // import Popup from './popup';
 import Home2 from "./Home2";
+
+
 export default class Home extends Component {
     constructor(props) {
         super(props);
@@ -29,9 +30,11 @@ export default class Home extends Component {
             active: event.target.text.trim(),
         });
     };
-    // componentDidUpdate() {
-    //   console.log(UserProfile.getName() + UserProfile.getProfile());
-    // }
+    componentDidMount() {
+        console.log('infos user: ' + UserProfile.getName() + UserProfile.getProfile());
+        this.setState({ isAdmin: UserProfile.getProfile() === "Administrateur" });
+        console.log('Admin status: ' + this.state.isAdmin);
+    }
 
     // componentDidMount() {
     //     // console.log(UserProfile.getName() + UserProfile.getProfile());
@@ -70,7 +73,7 @@ export default class Home extends Component {
                                                             ? "nav-link active"
                                                             : "nav-link"
                                                     }
-                                                    to="/home2"
+                                                    to="/Home2"
                                                     onClick={this.handleActive}
                                                 >
                                                     <i className="bi bi-house"></i> Acceuil
@@ -89,35 +92,21 @@ export default class Home extends Component {
                                                     <i className="bi bi-file-text"></i> Diplome
                                                 </Link>
                                             </li>
-                                            <li className="nav-item">
-                                                <Link
-                                                    className={
-                                                        this.state.active === "Utilisateur"
-                                                            ? "nav-link active"
-                                                            : "nav-link"
-                                                    }
-                                                    to="/userlist"
-                                                    onClick={this.handleActive}
-                                                >
-                                                    <i className="bi bi-people"></i> Utilisateur
-                                                </Link>
-                                            </li>
-
-                                            {/* {this.state.isAdmin ? (
+                                            {this.state.isAdmin ? (
                                                 <li className="nav-item">
                                                     <Link
                                                         className={
-                                                            this.state.active === "Utilisateurs"
+                                                            this.state.active === "Administrateur"
                                                                 ? "nav-link active"
                                                                 : "nav-link"
                                                         }
-                                                        to="/users"
+                                                        to="/userlist"
                                                         onClick={this.handleActive}
                                                     >
                                                         <i className="bi bi-person-circle"></i> Utilisateurs
                                                     </Link>
                                                 </li>
-                                            ) : null} */}
+                                            ) : null}
                                             <Button
                                                 className="btn  btn-danger btn-sm"
                                                 onClick={this.onLogOut}
@@ -132,6 +121,8 @@ export default class Home extends Component {
                             <div className="content-wrapper">
                                 <Routes>
                                     {/* Diplome routes */}
+                                    <Route path="/" element={<Home2 />} ></Route>
+                                    <Route path="/Home2" element={<Home2 />} ></Route>
                                     <Route path="/diplome" element={<Diplome />} ></Route>
                                     <Route path="/addDiplome" element={<AddDiplome />} ></Route>
                                     <Route path="voir/:id" element={<GenererDiplome />} ></Route>
@@ -145,7 +136,6 @@ export default class Home extends Component {
                                     {/* <Route path="/home" element={<Home />} ></Route> */}
                                     <Route path="/formulaire" element={<Formulaire />} ></Route>
                                     {/* <Route path="/popup" element={<Popup />} ></Route> */}
-                                    <Route path="/home2" element={<Home2 />} ></Route>
                                 </Routes>
                             </div>
                             <footer className="main-footer">

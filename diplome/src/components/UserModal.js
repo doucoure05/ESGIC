@@ -166,8 +166,8 @@ export default class UserModal extends Component {
                         )}
                     </Modal.Header>
                     <Modal.Body>
-                        <Form>
-                            <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form className="row">
+                            <Form.Group className="mb-3 col-sm-6" controlId="formBasicEmail">
                                 <Form.Label>Nom</Form.Label>
                                 <Form.Control
                                     type="text"
@@ -178,7 +178,7 @@ export default class UserModal extends Component {
                                 />
                             </Form.Group>
 
-                            <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <Form.Group className="mb-3 col-sm-6" controlId="formBasicEmail">
                                 <Form.Label>Prénom</Form.Label>
                                 <Form.Control
                                     type="text"
@@ -191,7 +191,7 @@ export default class UserModal extends Component {
                                 />
                             </Form.Group>
 
-                            <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <Form.Group className="mb-3  col-sm-6" controlId="formBasicEmail">
                                 <Form.Label>Login</Form.Label>
                                 <Form.Control
                                     type="text"
@@ -204,7 +204,7 @@ export default class UserModal extends Component {
                                 />
                             </Form.Group>
 
-                            <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <Form.Group className="mb-3  col-sm-6" controlId="formBasicEmail">
                                 <Form.Label>Password</Form.Label>
                                 <Form.Control
                                     type="text"
