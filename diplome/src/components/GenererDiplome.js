@@ -24,6 +24,7 @@ function GenererDiplome() {
 
     useEffect(() => {
         getDiplomeById();
+        console.log('id diplome: ' + id);
     }, []);
 
     const generateDiplome = () => {
@@ -49,7 +50,7 @@ function GenererDiplome() {
 
 
     const getDiplomeById = async () => {
-        const response = await axios.get(`http://localhost:5000/diplomes/${id}`);
+        const response = await axios.get(`http://localhost:5000/diplome/${id}`);
         setNom(response.data.nom);
         setDate_nais(response.data.date_nais);
         setLieu(response.data.lieu);
@@ -143,7 +144,7 @@ function GenererDiplome() {
                     <Button style={{ textAlign: "center" }}
                         className="Button"
                         variant="success"
-                        onClick={generateDiplome2}
+                        onClick={generateDiplome}
                     >telecharger
                         <i className="bi bi-file-text"></i>
                     </Button>
