@@ -13,6 +13,7 @@ const Diplome = db.define('diplomes', {
     filiere: DataTypes.STRING,
     mention: DataTypes.STRING,
     date_deliv: DataTypes.STRING,
+    qr_code: DataTypes.STRING,
 },{
     freezeTableName: true
 });

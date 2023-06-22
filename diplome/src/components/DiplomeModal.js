@@ -15,6 +15,7 @@ export default class DiplomeModal extends Component {
             diplome: null,
             formOK: false,
             listDiplome: [],
+            qrcodeValue:"",
         };
     }
 
@@ -61,11 +62,8 @@ export default class DiplomeModal extends Component {
         let isfiliere = false;
         let ismention = false;
         let isdate_deliv = false;
-        // console.log(
-        //   this.state.listuser.filter(
-        //     (item) => item.telephone === this.state.user.telephone
-        //   )
-        // );
+        let qr_code = "";
+    
         if (this.state.diplome.nom != null) {
             if (this.state.diplome.nom.length > 0) {
                 isnom = true;
@@ -111,9 +109,19 @@ export default class DiplomeModal extends Component {
                 isdate_deliv = true;
             }
         }
+        if (this.state.diplome.nom != null && this.state.diplome.matricule != null && this.state.diplome.filiere != null) {
+            if (this.state.diplome.nom.length > 0 && this.state.diplome.matricule.length > 0 && this.state.diplome.filiere.length > 0) {
+                const generateValue = `${this.state.diplome.matricule}, ${this.state.diplome.nom}, ${this.state.diplome.filiere}`;
+                this.setState({
+                    qrcodeValue: generateValue,
+                });
+                
+           }
+        }
 
         this.setState({
-            formOK: isnom && isdate_nais && islieu && ismatricule && isdp && issession && isfiliere && ismention && isdate_deliv,
+            formOK: isnom && isdate_nais && islieu && ismatricule && isdp && issession
+                && isfiliere && ismention && isdate_deliv,
         });
     }
 
@@ -153,6 +161,7 @@ export default class DiplomeModal extends Component {
     }
 
     doSave = (event) => {
+        this.state.diplome.qr_code = this.state.qrcodeValue;
         this.props.onSave(this.state.diplome);
         this.handleClose();
     };
@@ -256,7 +265,7 @@ export default class DiplomeModal extends Component {
                                     }
                                     onChange={this.handleChange.bind(this)}
                                 >
-                                    <option value="">Sélectionner un diplome</option>
+                                    <option value=" ">Sélectionner un diplome</option>
                                     <option value="DUT">DUT</option>
                                     <option value="Licence">Licence</option>
                                     <option value="Master">Master</option>

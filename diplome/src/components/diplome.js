@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import axios from "axios";
-import { Link } from 'react-router-dom';
 import Toast from "react-bootstrap/Toast";
 import ToastContainer from "react-bootstrap/ToastContainer";
 import Button from "react-bootstrap/esm/Button.js";
@@ -41,6 +39,7 @@ export default class DiplomeList extends Component {
                     diplome.filiere,
                     diplome.mention,
                     diplome.date_deliv,
+                    diplome.qr_code,
                 );
                 list.push(d);
             });

@@ -17,6 +17,7 @@ export const saveDiplome = async (diplome) => {
             filiere: diplome.filiere,
             mention: diplome.mention,
             date_deliv: diplome.date_deliv,
+            qr_code: diplome.qr_code,
         });
         return response.data;
     } catch (error) {
@@ -39,6 +40,7 @@ export const updateDiplome = async (diplome) => {
                 filiere: diplome.filiere,
                 mention: diplome.mention,
                 date_deliv: diplome.date_deliv,
+                qr_code: diplome.qr_code,
             }
         );
         return response.data;

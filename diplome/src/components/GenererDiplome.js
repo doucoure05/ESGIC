@@ -7,6 +7,7 @@ import axios from 'axios';
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "bulma/css/bulma.css";
 import jsPDF from 'jspdf';
+import QRCode from "qrcode.react";
 
 function GenererDiplome() {
 
@@ -19,6 +20,7 @@ function GenererDiplome() {
     const [filiere, setFiliere] = useState("");
     const [mention, setMention] = useState("");
     const [date_deliv, setDate_deliv] = useState("");
+    const [qrcodeValue, setQrcodeValue] = useState("");
     const { id } = useParams();
     
 
@@ -60,6 +62,7 @@ function GenererDiplome() {
         setFiliere(response.data.filiere);
         setMention(response.data.mention);
         setDate_deliv(response.data.date_deliv);
+        setQrcodeValue(response.data.qr_code);
     }
 
 
@@ -74,6 +77,7 @@ function GenererDiplome() {
                 <div className="row">
                     <div className="col-sm-2">
                         <img id='image' src="/images/esgic.png" alt="Diplome Logo" />
+                        <QRCode className='h-50 w-50 pl-1 pr-0' value={qrcodeValue} />
                     </div>
                     <div className="col-sm-5">
                         <h5 style={{ color: "blue" }}>Ecole Superieur de Gestion, d'Informatique et de Comptabilité <br /></h5>

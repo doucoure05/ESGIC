@@ -1,5 +1,5 @@
 export default class Diplome {
-    constructor(id, nom, date_nais, lieu, matricule, dp, session, filiere, mention, date_deliv) {
+    constructor(id, nom, date_nais, lieu, matricule, dp, session, filiere, mention, date_deliv, qr_code) {
         this.id = id;
         this.nom = nom;
         this.date_nais = date_nais;
@@ -10,5 +10,6 @@ export default class Diplome {
         this.filiere = filiere;
         this.mention = mention;
         this.date_deliv = date_deliv;
+        this.qr_code = qr_code;
     }
 }
