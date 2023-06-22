@@ -1,13 +1,20 @@
 .div{
     background: white;
     border: 5px solid blue;
-    width: 843px;
+    width: fit-content;
+    height: fit-content;
     margin: auto;
 }
 
+.separateur {
+    border-top: 1px solid #ccc;
+    margin: 10px 0;
+}
+
 #h3{
-    text-align: center;
+    text-align: left;
     color: red;
+    font-size: 63px;
 }
 
 h5 {
@@ -17,7 +24,7 @@ h5 {
 
 #image {
     width: 100px;
-    height: 100px;
+    height: 80px;
 };
 
 .Button{
