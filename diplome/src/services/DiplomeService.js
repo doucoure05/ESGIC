@@ -1,13 +1,13 @@
 import axios from "axios";
 
 export const getDiplomes = async () => {
-    const response = await axios.get("http://13.50.239.82/diplomes");
+    const response = await axios.get("http://13.50.239.82:3306/diplomes");
     return response.data;
 };
 
 export const saveDiplome = async (diplome) => {
     try {
-        const response = await axios.post("http://13.50.239.82/diplome", {
+        const response = await axios.post("http://13.50.239.82:3306/diplome", {
             nom: diplome.nom,
             date_nais: diplome.date_nais,
             lieu: diplome.lieu,
@@ -29,7 +29,7 @@ export const saveDiplome = async (diplome) => {
 export const updateDiplome = async (diplome) => {
     try {
         const response = await axios.patch(
-            `http://13.50.239.82/diplome/${diplome.id}`,
+            `http://13.50.239.82:3306/diplome/${diplome.id}`,
             {
                 nom: diplome.nom,
                 date_nais: diplome.date_nais,
@@ -52,7 +52,7 @@ export const updateDiplome = async (diplome) => {
 
 export const deleteDiplome = async (id) => {
     try {
-        const response = await axios.delete(`http://13.50.239.82/diplome/${id}`);
+        const response = await axios.delete(`http://13.50.239.82:3306/diplome/${id}`);
         console.log('**************\nthis is te reponse: ' + response)
         return response.data;
     } catch (error) {

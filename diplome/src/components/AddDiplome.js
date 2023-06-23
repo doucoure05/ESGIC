@@ -54,7 +54,7 @@ export default class AddDiplome extends Component {
     saveDiplome = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://13.50.239.82/diplomes', {
+            await axios.post('http://13.50.239.82:3306/diplomes', {
                 nom: this.state.nom,
                 date_nais: this.state.date_nais,
                 lieu: this.state.lieu,

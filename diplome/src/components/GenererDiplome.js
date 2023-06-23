@@ -64,7 +64,7 @@ function GenererDiplome() {
     }
 
     const getDiplomeById = async () => {
-        const response = await axios.get(`http://13.50.239.82/diplome/${id}`);
+        const response = await axios.get(`http://13.50.239.82:3306/diplome/${id}`);
         setNom(response.data.nom);
         setDate_nais(response.data.date_nais);
         setLieu(response.data.lieu);
