@@ -132,6 +132,9 @@ function GenererDiplome() {
                     <div className='col-sm-2'><QRCode className='h-50 w-75 pl-3' value={qrcodeValue} /></div>
                     <div className='col-sm-10 pt-3'> <br /><h1 id="h3"> ATTESTATION DU DIPLOME</h1></div>
                 </div>
+                <br />
+                <hr className='horizontal-ligne' />
+                <br />
                 {/* <hr id='hr'></hr>  */}
                 <h5 style={{ textAlign: "center", paddingLeft: 5 + "px" }}>Nous soussignés, Ecome Superieur de Gestion, d'Informatique et Comptabilité(ESGIC ), attestons que <strong>Mr/Mlle/Mme</strong> </h5>
                 <h3 style={{ textAlign: "center" }}><strong>{nom} né(e) le {date_nais}</strong></h3>
@@ -157,7 +160,8 @@ function GenererDiplome() {
                         <h5 style={{ textAlign: 'left', paddingLeft: 5 + "px" }}><strong>Le Directeur des Etudes</strong></h5>
                         <br />
                         <br />
-                        <h5 style={{ textAlign: 'left', paddingLeft: 5 + "px" }}><strong>Aguibou OUATTARA</strong></h5>
+                        <h5 style={{ textAlign: 'left', paddingLeft: 5 + "px", paddingBottom: 15.5 +'px' }}><strong>Aguibou OUATTARA</strong></h5>
+                        
                     </div>
                     <div className="col-sm-5">
                         <img style={{ width: 120 + "px", height: 50 + "px", marginLeft: 110 + "px" }} src="/golde_medail2_reduit.jpeg" alt="Médaille" />
@@ -167,7 +171,8 @@ function GenererDiplome() {
                         <h5 style={{ textAlign: "right", paddingRight: 5 + "px" }}><strong>Le Directeur Général</strong></h5>
                         <br />
                         <br />
-                        <h5 style={{ textAlign: "right", paddingRight: 5 + "px" }}><strong>Diakaridia CAMARA</strong></h5>
+                        <h5 style={{ textAlign: "right", paddingRight: 5 + "px", paddingBottom: 15.5 + 'px' }}><strong>Diakaridia CAMARA</strong></h5>
+                       
                     </div>
                     
                 </div>

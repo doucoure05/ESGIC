@@ -1,4 +1,4 @@
-.div{
+.div {
     background: white;
     border: 5px solid blue;
     width: fit-content;
@@ -6,28 +6,37 @@
     margin: auto;
 }
 
-.separateur {
-    border-top: 1px solid #ccc;
-    margin: 10px 0;
+.horizontal-ligne {
+    height: 4px;
+    width: 50%;
+    margin: 0 auto;
+    border-color: black;
+    border-width: 5px;
 }
 
-#h3{
+#h3 {
     text-align: left;
     color: red;
-    font-size: 63px;
+    font-size: 60px;
+    margin-bottom: 10.5px;
+    margin-right: 10px;
 }
 
 h5 {
     text-align: center;
-};
+}
+
+;
 
 
 #image {
     width: 100px;
     height: 80px;
-};
+}
 
-.Button{
+;
+
+.Button {
     margin: auto;
     justify-content: center;
 }
