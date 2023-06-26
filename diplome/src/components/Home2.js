@@ -22,7 +22,7 @@ function Home2() {
     }, []);
 
     const getDiplomes = async () => {
-        const response = await axios.get('http://13.50.239.82/diplomes');
+        const response = await axios.get('http://127.0.0.1/diplomes');
         setDiplome(response.data);
         setTableRows(response.data);
     };
