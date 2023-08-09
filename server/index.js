@@ -1,13 +1,12 @@
-import UserRoute from './routes/UserRoute.js';
-import DiplomeRoute from './routes/DiplomeRoute.js';
 const express = require('express');
-
 const app = express();
-const PORT = 5000;
+const UserRoute = require('./routes/UserRoute.js');
+const DiplomeRoute = require('./routes/DiplomeRoute.js');
 app.use(cors({}));
 app.use(express.json());
 app.use(UserRoute);
 app.use(DiplomeRoute);
+
 const morgan = require('morgan');
 const cors = require('cors');
 
