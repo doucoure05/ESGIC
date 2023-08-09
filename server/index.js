@@ -1,7 +1,5 @@
-import cors from 'cors';
 import UserRoute from './routes/UserRoute.js';
 import DiplomeRoute from './routes/DiplomeRoute.js';
-import * as path from 'path';
 const express = require('express');
 
 const app = express();
