@@ -1,9 +1,8 @@
-import express from "express";
-import mysql from 'mysql';
 import cors from 'cors';
 import UserRoute from './routes/UserRoute.js';
 import DiplomeRoute from './routes/DiplomeRoute.js';
 import * as path from 'path';
+const express = require('express');
 
 const app = express();
 const PORT = 5000;
