@@ -10,5 +10,3 @@ router.get('/diplome/:id', getDiplomeById);
 router.post('/diplome', createDiplome);
 router.patch('/diplome/:id', updateDiplome);
 router.delete('/diplome/:id', deleteDiplome);
-
-export default router;

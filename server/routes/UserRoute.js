@@ -12,4 +12,3 @@ router.post('/user', createUser);
 router.patch('/user/:id', updateUser);
 router.delete('/user/:id', deleteUser);
 router.post("/userByLoginAndPass", getUsserByLoginAndPassword);
-export default router;
