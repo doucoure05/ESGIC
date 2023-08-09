@@ -1,6 +1,10 @@
-import express from 'express';
-import { getUsers, getUserById, createUser, updateUser, deleteUser, getUsserByLoginAndPassword } from '../controllers/UserController.js';
-
+const express = require('express');
+const getUsers = require('../controllers/UserController.js');
+const getUserById = require('../controllers/UserController.js');
+const createUser = require('../controllers/UserController.js');
+const updateUser = require('../controllers/UserController.js');
+const deleteUser = require('../controllers/UserController.js');
+const getUsserByLoginAndPassword = require('../controllers/UserController.js');
 const router = express.Router();
 router.get('/users', getUsers);
 router.get('/user/:id', getUserById);
