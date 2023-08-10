@@ -1,5 +1,5 @@
-var Sequelize = required("sequelize");
-const db = required("../config/Database.js");
+import {Sequelize} from "sequelize";
+import db from "../config/Database.js";
 
 const {DataTypes} = Sequelize;
 
@@ -13,6 +13,7 @@ const User = db.define('users', {
     freezeTableName: true
 });
 
+export default User;
 
 (async()=>{
      await db.sync();

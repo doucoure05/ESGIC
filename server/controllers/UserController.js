@@ -1,6 +1,6 @@
-var User = required('../models/UserModel.js');
+import User from '../models/UserModel.js';
 
- const getUsers = async (req, res) => {
+export const getUsers = async (req, res) => {
     try {
         const response = await User.findAll();
         res.status(200).json(response);
@@ -9,10 +9,10 @@ var User = required('../models/UserModel.js');
     }
 }
 
- const getUserById = async (req, res) => {
+export const getUserById = async (req, res) => {
     try {
         const response = await User.findOne({
-            where:{
+            where: {
                 id: req.params.id
             }
         });
@@ -22,42 +22,42 @@ var User = required('../models/UserModel.js');
     }
 }
 
- const createUser = async (req, res) => {
+export const createUser = async (req, res) => {
     try {
-        await User.create(req.body);       
-        res.status(201).json({msg: "User created"});
+        await User.create(req.body);
+        res.status(201).json({ msg: "User created" });
     } catch (error) {
         console.log(error.message);
     }
 }
 
- const updateUser = async (req, res) => {
+export const updateUser = async (req, res) => {
     try {
         await User.update(req.body, {
-            where:{
+            where: {
                 id: req.params.id
             }
-        });       
-        res.status(200).json({msg: "User Updated"});
+        });
+        res.status(200).json({ msg: "User Updated" });
     } catch (error) {
         console.log(error.message);
     }
 }
 
- const deleteUser = async (req, res) => {
+export const deleteUser = async (req, res) => {
     try {
         await User.destroy({
-            where:{
+            where: {
                 id: req.params.id
             }
-        });         
-        res.status(200).json({msg: "User deleted"});    
+        });
+        res.status(200).json({ msg: "User deleted" });
     } catch (error) {
         console.log(error.message);
     }
 }
 
- const getUsserByLoginAndPassword = async (req, res) => {
+export const getUsserByLoginAndPassword = async (req, res) => {
     try {
         // console.log(req.body);
         const response = await User.findOne({
