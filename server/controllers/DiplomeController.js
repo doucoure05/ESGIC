@@ -1,4 +1,4 @@
-import Diplome from '../models/DiplomeModel.js';
+var Diplome = require('../models/DiplomeModel.js');
 
 export const getDiplomes = async (req, res) => {
     try {

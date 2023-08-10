@@ -1,5 +1,5 @@
-import {Sequelize} from "sequelize";
-import db from "../config/Database.js";
+var Sequelize = required("sequelize");
+const db = required("../config/Database.js");
 
 const {DataTypes} = Sequelize;
 
