@@ -1,6 +1,6 @@
 var Diplome = require('../models/DiplomeModel.js');
 
-export const getDiplomes = async (req, res) => {
+ const getDiplomes = async (req, res) => {
     try {
         const response = await Diplome.findAll();
         res.status(200).json(response);
@@ -9,7 +9,7 @@ export const getDiplomes = async (req, res) => {
     }
 }
 
-export const getDiplomeById = async (req, res) => {
+ const getDiplomeById = async (req, res) => {
     try {
         const response = await Diplome.findOne({
             where:{
@@ -22,7 +22,7 @@ export const getDiplomeById = async (req, res) => {
     }
 }
 
-export const createDiplome = async (req, res) => {
+ const createDiplome = async (req, res) => {
     try {
         await Diplome.create(req.body);       
         res.status(201).json({msg: "Diplome created"});
@@ -31,7 +31,7 @@ export const createDiplome = async (req, res) => {
     }
 }
 
-export const updateDiplome = async (req, res) => {
+ const updateDiplome = async (req, res) => {
     try {
         await Diplome.update(req.body, {
             where:{
@@ -44,7 +44,7 @@ export const updateDiplome = async (req, res) => {
     }
 }
 
-export const deleteDiplome = async (req, res) => {
+ const deleteDiplome = async (req, res) => {
     try {
         await Diplome.destroy({
             where:{

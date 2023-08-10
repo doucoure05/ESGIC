@@ -13,7 +13,6 @@ const User = db.define('users', {
     freezeTableName: true
 });
 
-export default User;
 
 (async()=>{
      await db.sync();

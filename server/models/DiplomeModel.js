@@ -18,7 +18,7 @@ const Diplome = db.define('diplomes', {
     freezeTableName: true
 });
 
-export default Diplome;
+ default Diplome;
 
 (async()=>{
      await db.sync();
